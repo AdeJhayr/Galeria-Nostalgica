@@ -1,0 +1,123 @@
+/* --- 1. IMPORTACIÓN Y FUENTES --- */
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;1,700&display=swap');
+
+/* --- 2. CONFIGURACIÓN GENERAL --- */
+body { 
+    font-family: 'Playfair Display', serif;
+    margin: 0;
+    line-height: 1.8;
+    background-color: #e6e0ed;
+    /* Fondo con patrón de "rosas" (puntos sutiles) */
+    background-image: 
+        radial-gradient(#d1bfdf 3px, transparent 3px), 
+        radial-gradient(#c5b4d4 1.5px, transparent 1.5px);
+    background-size: 100px 100px; 
+    background-position: 0 0, 50px 50px;
+    background-attachment: fixed;
+    color: #2d2438; 
+}
+
+header { 
+    background: linear-gradient(180deg, #3d2c54, #2a1f3a); 
+    color: #fdf5ff; 
+    padding: 8rem 2rem; 
+    text-align: center;
+    border-bottom: 8px solid #a68dbd;
+}
+
+header h1 { font-size: 3.5rem; letter-spacing: 2px; }
+
+/* --- 3. SECCIONES (EFECTO CRISTAL) --- */
+.seccion { 
+    background: rgba(255, 255, 255, 0.4); 
+    backdrop-filter: blur(10px); 
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    margin: 4rem auto; 
+    padding: 4rem; 
+    max-width: 900px; 
+    border-radius: 30px; 
+    box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+}
+
+h2 { 
+    font-size: 2.2rem; 
+    color: #3d2c54; 
+    text-align: center;
+    margin-bottom: 2rem;
+    border-bottom: 2px solid #a68dbd;
+    display: inline-block;
+}
+
+/* --- 4. LISTAS (DIARIO) --- */
+.lista-simetrica { list-style: none; padding: 0; text-align: left; }
+.lista-simetrica li { 
+    position: relative;
+    padding: 1rem 0 1rem 2.5rem; 
+    border-bottom: 1px solid rgba(140, 115, 166, 0.2); 
+    font-size: 1.2rem;
+    color: #4a3f5a;
+}
+.lista-simetrica li::before {
+    content: "♥"; 
+    position: absolute;
+    left: 0.3rem;
+    color: #8c73a6;
+    font-size: 1rem;
+}
+
+/* --- 5. GALERÍA --- */
+.galeria { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1.5rem; margin-top: 1rem; }
+.galeria img { 
+    width: 100%; height: 220px; object-fit: cover; border-radius: 12px; 
+    filter: grayscale(20%); cursor: pointer; transition: 0.4s;
+    border: 4px solid white;
+}
+.galeria img:hover { filter: grayscale(0%); transform: scale(1.05); box-shadow: 0 10px 20px rgba(0,0,0,0.2); }
+
+/* --- 6. REPRODUCTOR --- */
+.reproductor { text-align: center; background: rgba(237, 233, 245, 0.6); }
+.controles-custom { display: flex; justify-content: center; gap: 40px; margin-top: 20px; }
+.controles-custom button {
+    background: transparent; border: none; font-size: 3rem; 
+    color: #3d2c54; cursor: pointer; transition: 0.3s;
+}
+.controles-custom button:hover { transform: scale(1.3); }
+
+/* --- 7. MODALES (CORREGIDOS) --- */
+/* Pantalla de inicio */
+.modal-inicio {
+    position: fixed; z-index: 99999; width: 100%; height: 100%;
+    background: #3d2c54; display: flex; justify-content: center; align-items: center;
+}
+.btn-inicio {
+    padding: 20px 40px; font-size: 1.5rem; cursor: pointer;
+    background: white; border: none; border-radius: 10px; color: #3d2c54;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.3); transition: 0.3s;
+}
+.btn-inicio:hover { transform: scale(1.05); }
+
+/* Visor de imágenes (Modal corregido) */
+.modal {
+    display: none; 
+    position: fixed; 
+    z-index: 100000; 
+    left: 0; top: 0;
+    width: 100%; height: 100%;
+    background-color: rgba(0, 0, 0, 0.9); 
+    justify-content: center;
+    align-items: center;
+    backdrop-filter: blur(8px);
+}
+.modal-contenido {
+    max-width: 85%; max-height: 80%;
+    border: 8px solid white; border-radius: 5px;
+    box-shadow: 0 0 30px rgba(255,255,255,0.3);
+    animation: zoomIn 0.3s ease-out;
+}
+@keyframes zoomIn { from {transform: scale(0.7); opacity: 0;} to {transform: scale(1); opacity: 1;} }
+
+.cerrar {
+    position: absolute; top: 30px; right: 50px;
+    color: white; font-size: 50px; cursor: pointer; font-family: Arial;
+}

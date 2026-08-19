@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Álbum Nostálgico</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    
+<div id="pantallaInicio" class="modal-inicio">
+    <button onclick="iniciarAlbum()" class="btn-inicio">Entrar al álbum :')</button>
+</div>
+
+<header>
+  <h1>simplemente NOSTALGIA :')</h1>
+  <p>Un espacio dedicado a recordar algunos momentos felices</p>
+</header>
+
+<main>
+  <!-- Sección de momentos -->
+  <section class="seccion">
+    <h2>Anécdotas &lt;3</h2>
+    <ul class="lista-simetrica">
+      <li>La cena con tu familia, jajaja me mareé en el viaje y me tocó dormirme y me abrazaste mucho, luego estuve muy nervioso por conocer a tu familia pero terminé divirtiéndome, jugamos uno y repartimos los regalos jajaja fue muy divertido y al final comimos asado :c y regresamos a casa.</li>
+      <li>El viaje en el carro, una experiencia inolvidable, fue algo bonito, especial aunque no fue mucho, comimos heladito y me dijeron que solo pedí chocolate y nada de frutas luego se limpió el carro, mientras vimos algunas películas juntos con tu hermana y su esposo.</li>
+      <li>Esos pequeños ratos que se volvieron especiales cuando venías a mi casa, era muy especiales muy bonitos, podía estar en tu regazo todo el día y sentirme en paz o cuando te pusiste mi ropa y parecías ladrona jajaj.</li>
+    </ul>
+  </section>
+
+  <!-- Sección de afecto -->
+  <section class="seccion">
+    <h2>Por qué significaste tanto para mi :c</h2>
+    <ul class="lista-simetrica">
+      <li>Tu forma de ser siempre atenta conmigo.</li>
+      <li>La dedicación que ponías en todo lo que hacías.</li>
+      <li>La calma que transmitías simplemente estando ahí.</li>
+      <li>La forma en la que me hacías sentir amado.</li>
+      <li>Poder contarte todo sin sentirme juzgado.</li>
+      <li>Me hiciste creer mas en mi.</li>
+      <li>Tu apoyo incondicional en los momentos difíciles.</li>
+      <li>Pude tener fe y creer mas en dios.</li>
+      <li>TE AMO.</li>
+    </ul>
+  </section>
+
+  <!-- Sección Galería -->
+  <section class="seccion">
+    <h2>Galería de recuerdos</h2>
+    
+    <div class="subtema">
+      <h3>Mis recuerdos :'3</h3>
+      <div class="galeria">
+        <img src="Imagenes/FotoN1.jpeg" alt="Recuerdo" onclick="abrirModal(this)">
+        <img src="Imagenes/FotoN2.jpeg" alt="Recuerdo" onclick="abrirModal(this)">
+        <img src="Imagenes/FotoN3.jpeg" alt="Recuerdo" onclick="abrirModal(this)">
+        <img src="Imagenes/FotoN4.jpeg" alt="Recuerdo" onclick="abrirModal(this)">
+        <img src="Imagenes/FotoN5.jpeg" alt="Recuerdo" onclick="abrirModal(this)">
+        <img src="Imagenes/Rcrd1.jpeg" alt="Recuerdo" onclick="abrirModal(this)">
+        <img src="Imagenes/Rcrd2.jpeg" alt="Recuerdo" onclick="abrirModal(this)">
+        <img src="Imagenes/Rcrd3.jpeg" alt="Recuerdo" onclick="abrirModal(this)">
+        <img src="Imagenes/Rcrd4.jpeg" alt="Recuerdo" onclick="abrirModal(this)">
+        <img src="Imagenes/Rcrd5.png" alt="Recuerdo" onclick="abrirModal(this)">
+        <img src="Imagenes/Recuerdo.jpg" alt="Recuerdo" onclick="abrirModal(this)">
+      </div>
+    </div>
+  </section> <!-- Aquí cerramos correctamente la sección de galería -->
+
+  <!-- Sección de reflexión final -->
+  <section class="seccion">
+    <h2>:c</h2>
+    <ul class="lista-simetrica">
+      <li>Ojalá haber tenido más fotos, me acuerdo que te dije que tú me olvidarías en un año pero yo jamás te olvidaría y aquí sigo amándote y recordando tus fotos, recordando los mejores momentos, me duele haberte lastimado fui inmaduro no debí de comportarme de esa manera, aprendí de esos errores pero ya es tarde :c igual mientras seas feliz yo seré feliz siempre estarás en mi corazón para siempre :) espero volver a verte algún día y quién sabe volver a enamorarnos? tal vez es mucho pedir y claramente no sucederá pero me gustaría que fuese posible volver a verte o intentarlo aunque es cierto no soy tan madura como me gustaría serlo aun tengo que aprender de mucho pero ahora sé que debo hacer y que no hacer sé cómo reaccionar a ciertos problemas, me gustaría volver a estar contigo te amare siempre :) .</li>
+    </ul>
+  </section>
+
+  <section class="seccion reproductor">
+    <h2>Music</h2>
+    <audio id="audioPlayer" loop>
+      <source src="Canciones/Otra vez.mp3" type="audio/mpeg">
+    </audio>
+    
+    <div class="controles-custom">
+      <button onclick="cambiarCancion(-1)">⏮</button>
+      <button id="btnPlayPause" onclick="playPause()">⏸</button>
+      <button onclick="cambiarCancion(1)">⏭</button>
+    </div>
+  </section>
+</main>
+
+<!-- Ventana modal para ampliar la foto -->
+<div id="modalImagen" class="modal" onclick="cerrarModal()">
+  <span class="cerrar">&times;</span>
+  <img class="modal-contenido" id="imgAmpliada">
+</div>
+
+<script>
+
+    const player = document.getElementById('audioPlayer');
+  const canciones = ['Canciones/Evergreem.mp3', 'Canciones/Otra vez.mp3', 'Canciones/Gara.mp3'];
+  let indice = 0;
+
+  function iniciarAlbum() {
+    document.getElementById('pantallaInicio').style.display = 'none';
+    player.play();
+  }
+
+  function playPause() {
+    if (player.paused) { player.play(); btnPlayPause.innerText = "⏸"; }
+    else { player.pause(); btnPlayPause.innerText = "▶"; }
+  }
+
+  function cambiarCancion(dir) {
+    indice = (indice + dir + canciones.length) % canciones.length;
+    player.src = canciones[indice];
+    player.play();
+  }
+
+
+
+  // Funciones para ver la imagen en grande
+  const modal = document.getElementById('modalImagen');
+  const imgAmpliada = document.getElementById('imgAmpliada');
+
+  function abrirModal(img) {
+    modal.style.display = "flex";
+    imgAmpliada.src = img.src;
+  }
+
+  function cerrarModal() {
+    modal.style.display = "none";
+  }
+</script>
+</body>
+</html>
