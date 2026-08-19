@@ -121,3 +121,31 @@ h2 {
     position: absolute; top: 30px; right: 50px;
     color: white; font-size: 50px; cursor: pointer; font-family: Arial;
 }
+
+/* --- ADAPTACIÓN PARA CELULARES (Responsive) --- */
+@media (max-width: 768px) {
+    header { padding: 4rem 1rem; }
+    header h1 { font-size: 2rem; } /* Título más pequeño */
+    
+    .seccion { 
+        margin: 1.5rem 1rem; 
+        padding: 1.5rem; /* Menos relleno en móviles */
+        border-radius: 15px;
+    }
+    
+    h2 { font-size: 1.6rem; }
+    
+    .lista-simetrica li {
+        font-size: 1rem;
+        padding-left: 1.8rem;
+    }
+    
+    .galeria { 
+        grid-template-columns: 1fr 1fr; /* 2 fotos por fila en lugar de una lista larga */
+        gap: 0.5rem;
+    }
+    
+    .galeria img { height: 150px; } /* Fotos más pequeñas para que quepan bien */
+    
+    .cerrar { right: 20px; top: 10px; font-size: 40px; }
+}
